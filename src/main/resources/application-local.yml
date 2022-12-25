@@ -1,0 +1,8 @@
+kafka:
+  bootstrap:
+    servers: localhost:29092,localhost:39092,localhost:49092
+
+datasource:
+  url: jdbc:postgresql://localhost:5432/kafka_db
+  username: kafka_user
+  password: kafka_password

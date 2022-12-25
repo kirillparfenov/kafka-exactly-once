@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.manrihter.kafkaexactlyonce.dao.KafkaExactlyOnceMapper">
+
+    <insert id="saveTopicOffset" parameterType="map">
+        insert into topics_offsets(topic, key_, offset_, partition_) values
+         <foreach collection="records" item="record" open="(" separator="),(" close=")">
+             #{record.topic}, #{record.key}, #{record.offset}, #{record.partition}
+         </foreach>
+        on conflict do nothing;
+    </insert>
+</mapper>
